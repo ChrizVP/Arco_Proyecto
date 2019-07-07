@@ -8,8 +8,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -26,15 +25,18 @@ public class MainActivity extends AppCompatActivity {
     final int handlerState = 0;
     private BluetoothAdapter btAdapter = null;
     private BluetoothSocket btSocket = null;
-    private StringBuilder DataStringIN = new StringBuilder();
     private ConnectedThread MyConexionBT;
     // Identificador unico de servicio - SPP UUID
     private static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     // String para la direccion MAC
     private static String address = null;
 
-    Switch btSwitch;
-
+    Switch btSwitch1;
+    Switch btSwitch2;
+    Switch btSwitch3;
+    Switch btSwitch4;
+    Switch btSwitch5;
+    Switch btSwitch6;
 
 
 
@@ -51,109 +53,109 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        btSwitch = (Switch) findViewById(R.id.switch_living_room);
+        btSwitch1 = (Switch) findViewById(R.id.switch_living_room);
 
-        btSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+        btSwitch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
 
                 if(isChecked == true){
                     //Codigo de que es lo que hace en on
-                    MyConexionBT.write("1");
+                    MyConexionBT.write("a");
                 }else{
                     //Codigo de que es lo que hace en off
-                    MyConexionBT.write("2");
+                    MyConexionBT.write("b");
                 }
             }
         });
 
-        btSwitch = (Switch) findViewById(R.id.switch_bad_room);
+        btSwitch2 = (Switch) findViewById(R.id.switch_bad_room);
 
-        btSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
-
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
-
-                if(isChecked == true){
-                    //Codigo de que es lo que hace en on
-                    MyConexionBT.write("3");
-                }else{
-                    MyConexionBT.write("4");
-                    //Codigo de que es lo que hace en off
-                }
-            }
-        });
-
-
-        btSwitch = (Switch) findViewById(R.id.switch_curtains);
-
-        btSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+        btSwitch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
 
                 if(isChecked == true){
                     //Codigo de que es lo que hace en on
-                    MyConexionBT.write("5");
+                    MyConexionBT.write("c");
                 }else{
+                    MyConexionBT.write("d");
                     //Codigo de que es lo que hace en off
-                    MyConexionBT.write("6");
                 }
             }
         });
 
 
-        btSwitch = (Switch) findViewById(R.id.switch_kitchen);
+        btSwitch3 = (Switch) findViewById(R.id.switch_curtains);
 
-        btSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+        btSwitch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
 
                 if(isChecked == true){
                     //Codigo de que es lo que hace en on
-                    MyConexionBT.write("7");
+                    MyConexionBT.write("e");
                 }else{
                     //Codigo de que es lo que hace en off
-                    MyConexionBT.write("8");
+                    MyConexionBT.write("f");
+                }
+            }
+        });
+
+
+        btSwitch4 = (Switch) findViewById(R.id.switch_kitchen);
+
+        btSwitch4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
+
+                if(isChecked == true){
+                    //Codigo de que es lo que hace en on
+                    MyConexionBT.write("g");
+                }else{
+                    //Codigo de que es lo que hace en off
+                    MyConexionBT.write("h");
                 }
             }
         });
 
 
 
-        btSwitch = (Switch) findViewById(R.id.switch_garage);
+        btSwitch5 = (Switch) findViewById(R.id.switch_garage);
 
-        btSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+        btSwitch5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
 
                 if(isChecked == true){
                     //Codigo de que es lo que hace en on
-                    MyConexionBT.write("9");
+                    MyConexionBT.write("i");
                 }else{
                     //Codigo de que es lo que hace en off
-                    MyConexionBT.write("10");
+                    MyConexionBT.write("j");
                 }
             }
         });
 
 
-        btSwitch = (Switch) findViewById(R.id.switch_motion_sensor);
+        btSwitch6 = (Switch) findViewById(R.id.switch_motion_sensor);
 
-        btSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+        btSwitch6.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
 
                 if(isChecked == true){
                     //Codigo de que es lo que hace en on
-                    MyConexionBT.write("11");
+                    MyConexionBT.write("k");
                 }else{
                     //Codigo de que es lo que hace en off
-                    MyConexionBT.write("12");
+                    MyConexionBT.write("l");
                 }
             }
         });
@@ -228,6 +230,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
 
     //Crea la clase que permite crear el evento de conexion
     private class ConnectedThread extends Thread
